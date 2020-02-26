@@ -18,8 +18,8 @@ try {
     $title = $_GET["title"];
 
     if(isset($_POST["submit"])) {
-        $stmt = $pdo->prepare("
-            UPDATE films
+        $stmt = $pdo->prepare(
+            "UPDATE films
             SET
                 titel = '".$_POST["title"]."',
                 duur = ".$_POST["duur"].",
@@ -27,9 +27,8 @@ try {
                 land_uitkomst = '".$_POST["land"]."',
                 omschrijving = '".addslashes($_POST["desc"])."'
             WHERE
-                titel = '".$_GET["title"]."';
-
-            ");
+                titel = '".$_GET["title"]."';"
+        );
         $stmt->execute();
         $title = $_POST["title"];
     }
